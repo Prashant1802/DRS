@@ -6,7 +6,7 @@ import threading
 import time
 import imutils # pip install imutils
 
-stream = cv2.VideoCapture("clip.mp4")
+stream = cv2.VideoCapture("video.mp4")
 flag = True
 def play(speed):
     global flag
@@ -30,7 +30,7 @@ def play(speed):
 
 def pending(decision):
     # 1. Display decision pending image
-    frame = cv2.cvtColor(cv2.imread("pending.png"), cv2.COLOR_BGR2RGB)
+    frame = cv2.cvtColor(cv2.imread("decisionpending.jpg"), cv2.COLOR_BGR2RGB)
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
     frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
     canvas.image = frame
@@ -39,7 +39,7 @@ def pending(decision):
     time.sleep(1.5)
 
     # 3. Display sponsor image
-    frame = cv2.cvtColor(cv2.imread("sponsor.png"), cv2.COLOR_BGR2RGB)
+    frame = cv2.cvtColor(cv2.imread("sponsor.jpg"), cv2.COLOR_BGR2RGB)
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
     frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
     canvas.image = frame
@@ -49,9 +49,9 @@ def pending(decision):
     time.sleep(2.5)
     # 5. Display out/notout image
     if decision == 'out':
-        decisionImg = "out.png"
+        decisionImg = "out.jpg"
     else:
-        decisionImg = "not_out.png"
+        decisionImg = "not out.jpg"
     frame = cv2.cvtColor(cv2.imread(decisionImg), cv2.COLOR_BGR2RGB)
     frame = imutils.resize(frame, width=SET_WIDTH, height=SET_HEIGHT)
     frame = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
@@ -73,13 +73,13 @@ def not_out():
     print("Player is not out")
 
 # Width and height of our main screen
-SET_WIDTH = 650
+SET_WIDTH = 655
 SET_HEIGHT = 368
 
 # Tkinter gui starts here
 window = tkinter.Tk()
-window.title("CodeWithHarry Third Umpire Decision Review Kit")
-cv_img = cv2.cvtColor(cv2.imread("welcome.png"), cv2.COLOR_BGR2RGB)
+window.title("Third Umpire Decision Review System")
+cv_img = cv2.cvtColor(cv2.imread("WELCOME.jpg"), cv2.COLOR_BGR2RGB)
 canvas = tkinter.Canvas(window, width=SET_WIDTH, height=SET_HEIGHT)
 photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(cv_img))
 image_on_canvas = canvas.create_image(0, 0, ancho=tkinter.NW, image=photo)
